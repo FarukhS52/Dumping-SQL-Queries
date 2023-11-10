@@ -37,6 +37,12 @@
    from Customer
    where Country = 'USA'
    order by FirstName asc;
+   
+-- 7. Fetch unique customer cities in alphabetical order
+
+Select Distinct(City) from Customer
+order by City ASC; 
+
 
    
 
