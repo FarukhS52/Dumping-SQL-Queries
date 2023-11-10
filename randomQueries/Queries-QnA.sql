@@ -29,5 +29,15 @@
    select patient_id , count(patient_id) as total_admissions
    from admissions
    where patient_id = 579;
+   
+   
+-- 6. Retrieve US customers' names and countries, ordered by first name.
+
+   select FirstName ,  Country 
+   from Customer
+   where Country = 'USA'
+   order by FirstName asc;
+
+   
 
 
