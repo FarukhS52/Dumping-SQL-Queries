@@ -48,6 +48,12 @@ order by City ASC;
 
 
    select * from admissions
-   where admission_date = discharge_date;   
+   where admission_date = discharge_date;  
+   
+   
+-- 8. Show all the even numbered Order_id from the orders table
+
+   select Order_id from orders
+   where MOD(Order_id,2)=0;
 
 
