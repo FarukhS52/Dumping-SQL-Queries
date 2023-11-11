@@ -55,5 +55,13 @@ order by City ASC;
 
    select Order_id from orders
    where MOD(Order_id,2)=0;
+   
+-- 10. Retrieve track names and album IDs for tracks over 5 minutes
+
+   select AlbumId  ,Name 
+   from Track
+   where Milliseconds >300000
+   order by Name ASC;
+ 
 
 
