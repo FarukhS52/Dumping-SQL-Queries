@@ -44,14 +44,14 @@ Select Distinct(City) from Customer
 order by City ASC; 
 
 
--- 7. Show all the columns from admissions where the patient was admitted and discharged on the same day.
+-- 8. Show all the columns from admissions where the patient was admitted and discharged on the same day.
 
 
    select * from admissions
    where admission_date = discharge_date;  
    
    
--- 8. Show all the even numbered Order_id from the orders table
+-- 9. Show all the even numbered Order_id from the orders table
 
    select Order_id from orders
    where MOD(Order_id,2)=0;
