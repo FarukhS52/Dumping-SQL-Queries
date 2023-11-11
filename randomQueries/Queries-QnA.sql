@@ -79,3 +79,11 @@ order by City ASC;
     select patient_id , first_name
     from patients
     where first_name like 's%s' And LENGTH(first_name) >=6;
+    
+-- 13. display the number of duplicate patients based on their first_name and last_name.
+--     Make sure the column names are first_name, last_name, num_of_duplicates
+
+    Select first_name , last_name, COUNT(first_name) as num_of_duplicates
+    from patients 
+    group by first_name,last_name
+    having count(first_name)>1;
