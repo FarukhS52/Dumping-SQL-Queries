@@ -64,7 +64,7 @@ order by City ASC;
    order by Name ASC;
  
 -- 11. Show the average unit price rounded to 2 decimal places, the total units in stock,
--- total discontinued products from the products table. The column names must be average_price, total_stock, total_discontinued
+--     total discontinued products from the products table. The column names must be average_price, total_stock, total_discontinued
 
    SELECT
   ROUND(AVG(unit_price), 2) AS average_price,
@@ -72,4 +72,10 @@ order by City ASC;
   SUM(discontinued) AS total_discontinued
   FROM
   products;
+  
+-- 12. Show patient_id and first_name from patients where their first_name start
+--     and ends with s and is at least 6 characters long and ordered by patient_id
 
+    select patient_id , first_name
+    from patients
+    where first_name like 's%s' And LENGTH(first_name) >=6;
