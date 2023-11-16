@@ -87,3 +87,10 @@ order by City ASC;
     from patients 
     group by first_name,last_name
     having count(first_name)>1;
+    
+-- 14. Show patient_id, diagnosis from admissions. Find patients admitted more than 1 times for the same diagnosis.
+
+   SELECT patient_id, diagnosis
+   FROM admissions
+   GROUP BY patient_id, diagnosis
+   HAVING COUNT(*) > 1;    
