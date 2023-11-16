@@ -57,6 +57,7 @@ FROM
 WHERE
     Country = 'USA'
 ORDER BY FirstName ASC;
+
    
 -- 7. Fetch unique customer cities in alphabetical order
 
@@ -68,7 +69,6 @@ ORDER BY City ASC;
 
 
 -- 8. Show all the columns from admissions where the patient was admitted and discharged on the same day.
-
 
    SELECT 
     *
@@ -86,6 +86,7 @@ FROM
     orders
 WHERE
     MOD(Order_id, 2) = 0;
+    
    
 -- 10. Retrieve track names and album IDs for tracks over 5 minutes
 
@@ -96,6 +97,7 @@ FROM
 WHERE
     Milliseconds > 300000
 ORDER BY Name ASC;
+
  
 -- 11. Show the average unit price rounded to 2 decimal places, the total units in stock,
 --     total discontinued products from the products table. The column names must be average_price, total_stock, total_discontinued
@@ -106,6 +108,7 @@ ORDER BY Name ASC;
     SUM(discontinued) AS total_discontinued
 FROM
     products;
+    
   
 -- 12. Show patient_id and first_name from patients where their first_name start
 --     and ends with s and is at least 6 characters long and ordered by patient_id
@@ -117,6 +120,7 @@ FROM
 WHERE
     first_name LIKE 's%s'
         AND LENGTH(first_name) >= 6;
+        
     
 -- 13. display the number of duplicate patients based on their first_name and last_name.
 --     Make sure the column names are first_name, last_name, num_of_duplicates
@@ -129,6 +133,7 @@ FROM
     patients
 GROUP BY first_name , last_name
 HAVING COUNT(first_name) > 1;
+
     
 -- 14. Show patient_id, diagnosis from admissions. Find patients admitted more than 1 times for the same diagnosis.
 
@@ -138,6 +143,7 @@ FROM
     admissions
 GROUP BY patient_id , diagnosis
 HAVING COUNT(*) > 1;    
+
    
 -- 15. Show all columns for patient_id 542's most recent admission_date.
 
@@ -149,3 +155,58 @@ WHERE patient_id = 542
         FROM admissions
         WHERE patient_id = 542
     );   
+    
+    
+-- 16. Show the difference between the largest weight and smallest weight for 
+-- patients with the last name 'Maroni'. Make sure to name this column "weight_delta" 
+
+   SELECT 
+    MAX(weight) - MIN(weight) AS weight_delta
+FROM
+    patients
+WHERE
+    last_name = 'Maroni';
+    
+    
+-- 17. Show all the contact_name, address, city of all customers which are not from 'Germany', 'Mexico', 'Spain'    
+
+   SELECT 
+    contact_name, address, city
+FROM
+    customers
+WHERE
+    country NOT IN ('Germany' , 'Mexico', 'Spain');
+    
+
+-- 18. Based on cities where our patient lives in, write a query to display the list of unique city starting with a vowel (a, e, i, o, u). 
+--   Show the result order in ascending by city.    
+
+    SELECT DISTINCT
+    city
+FROM
+    patients
+WHERE
+    LOWER(SUBSTRING(city, 1, 1)) IN ('a' , 'e', 'i', 'o', 'u')
+ORDER BY city ASC;
+
+
+-- 19. Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
+--   The column names must be city, num_patients
+
+    SELECT 
+    COUNT(patient_id) AS num_patients, city
+FROM
+    patients
+GROUP BY city
+ORDER BY num_patients DESC , city ASC;
+
+
+-- 20. Write an SQL query that counts the number of customers from each country. 
+--    You should group the results by Country and order them alphabetically by Country.
+
+    SELECT 
+    Country, COUNT(CustomerId) AS CustomerCount
+FROM
+    Customer
+GROUP BY Country
+ORDER BY Country ASC;
